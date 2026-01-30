@@ -4,9 +4,26 @@ using Livraria.Models;
 
 namespace Livraria.Data
 {
-    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
+    public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<Livraria.Models.Cliente> Cliente { get; set; } = default!;
-        public DbSet<Livraria.Models.Autor> Autor { get; set; } = default!;
+
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        { }
+
+        public DbSet<Emprestimo> Emprestimo { get; set; } = default!;
+        public DbSet<Livro> Livro { get; set; } = default!;
+
+        public DbSet<Autor> Autor { get; set; } = default!;
+        public DbSet<Cliente> Cliente { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Additional configuration if needed
+            builder.Entity<Livro>().ToTable("Livros");
+            builder.Entity<Emprestimo>().ToTable("Emprestimos");
+
+        }
     }
 }
