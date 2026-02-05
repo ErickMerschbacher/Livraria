@@ -49,8 +49,8 @@ namespace Livraria.Controllers
         // GET: Emprestimos/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Set<Cliente>(), "Id", "Id");
-            ViewData["LivroId"] = new SelectList(_context.Set<Livro>(), "Id", "Id");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
+            ViewData["LivroId"] = new SelectList(_context.Livro, "Id", "Id");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace Livraria.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Set<Cliente>(), "Id", "Id", emprestimo.ClienteId);
-            ViewData["LivroId"] = new SelectList(_context.Set<Livro>(), "Id", "Id", emprestimo.LivroId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", emprestimo.ClienteId);
+            ViewData["LivroId"] = new SelectList(_context.Livro, "Id", "Id", emprestimo.LivroId);
             return View(emprestimo);
         }
 
@@ -85,8 +85,8 @@ namespace Livraria.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Set<Cliente>(), "Id", "Id", emprestimo.ClienteId);
-            ViewData["LivroId"] = new SelectList(_context.Set<Livro>(), "Id", "Id", emprestimo.LivroId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", emprestimo.ClienteId);
+            ViewData["LivroId"] = new SelectList(_context.Livro, "Id", "Id", emprestimo.LivroId);
             return View(emprestimo);
         }
 
@@ -122,8 +122,8 @@ namespace Livraria.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Set<Cliente>(), "Id", "Id", emprestimo.ClienteId);
-            ViewData["LivroId"] = new SelectList(_context.Set<Livro>(), "Id", "Id", emprestimo.LivroId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", emprestimo.ClienteId);
+            ViewData["LivroId"] = new SelectList(_context.Livro, "Id", "Id", emprestimo.LivroId);
             return View(emprestimo);
         }
 
