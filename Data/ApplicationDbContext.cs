@@ -23,6 +23,8 @@ namespace Livraria.Data
             // Additional configuration if needed
             builder.Entity<Livro>().ToTable("Livros");
             builder.Entity<Emprestimo>().ToTable("Emprestimos");
+            builder.Entity<Autor>().ToTable("Autores");
+            builder.Entity<Cliente>().ToTable("Clientes");
 
         }
     }
