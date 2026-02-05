@@ -1,53 +1,71 @@
 ﻿@model IEnumerable<Livraria.Models.Livro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Livros";
 }
 
-<h1>Tabela</h1>
+<body style="background:#E2E8CE; min-height:100vh;">
 
-<p>
-    <a asp-action="Create">Criar Novo</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genero)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <h1 style="color:#40513B; text-align:center; padding-top:30px;">
+        Livros
+    </h1>
+
+    <div style="display:flex; justify-content:center; padding:20px;">
+        <div style="width:90%; background:#40513B; padding:30px; border-radius:12px;">
+
+            <div style="text-align:center; margin-bottom:10px;">
+                <a asp-action="Create"
+                   style="background:#FF7F11;
+                      color:#262626;
+                      padding:10px 20px;
+                      border-radius:8px;
+                      text-decoration:none;
+                      font-weight:bold;">
+                    + Criar Novo
+                </a>
+            </div>
+
+            <table class="table"
+                   style="background:#E5D9B6;
+                      border-radius:10px;
+                      overflow:hidden;">
+                <thead style="background:#628141; color:#E5D9B6;">
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Preço</th>
+                        <th>Gênero</th>
+                        <th style="text-align:center;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="color:#262626;">
+                            <td>@item.Titulo</td>
+                            <td>@item.Autor</td>
+                            <td>R$ @item.Preco</td>
+                            <td>@item.Genero</td>
+                            <td style="text-align:center;">
+                                <a asp-action="Edit" asp-route-id="@item.Id"
+                                   style="color:#40513B; font-weight:bold;">
+                                    Editar
+                                </a> |
+                                <a asp-action="Details" asp-route-id="@item.Id"
+                                   style="color:#628141; font-weight:bold;">
+                                    Detalhes
+                                </a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id"
+                                   style="color:#E67E22; font-weight:bold;">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>

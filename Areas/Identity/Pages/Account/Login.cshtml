@@ -1,0 +1,105 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Entrar";
+}
+
+<body style="background:#E2E8CE; min-height:100vh;">
+
+    <h1 style="color:#40513B; text-align:center; padding-top:30px;">
+        @ViewData["Title"]
+    </h1>
+
+    <div class="row"
+         style="padding:40px;
+            display:flex;
+            justify-content:center;">
+
+        <div class="col-md-5">
+            <form id="account"
+                  method="post"
+                  style="background:#40513B;
+                     padding:30px;
+                     border-radius:12px;
+                     color:#E5D9B6;">
+
+                <h2 style="color:#FF7F11; text-align:center;">
+                    Entrar na conta
+                </h2>
+
+                <hr style="border-color:#ACBFA4" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger"
+                     role="alert"></div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email"
+                           class="form-control"
+                           style="background:#E5D9B6;
+                              color:#262626;
+                              border:2px solid #628141;"
+                           placeholder="email@exemplo.com" />
+                    <label asp-for="Input.Email" style="color:#ACBFA4">
+                        Email
+                    </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password"
+                           class="form-control"
+                           style="background:#E5D9B6;
+                              color:#262626;
+                              border:2px solid #628141;"
+                           placeholder="Senha" />
+                    <label asp-for="Input.Password" style="color:#ACBFA4">
+                        Senha
+                    </label>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label style="color:#ACBFA4">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        Lembrar de mim
+                    </label>
+                </div>
+
+                <button id="login-submit"
+                        type="submit"
+                        class="w-100 btn btn-lg"
+                        style="background:#FF7F11;
+                           color:#262626;
+                           font-weight:bold;">
+                    Entrar
+                </button>
+
+                <div style="margin-top:20px; text-align:center;">
+                    <p>
+                        <a asp-page="./ForgotPassword" style="color:#ACBFA4;">
+                            Esqueceu a senha?
+                        </a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register"
+                           asp-route-returnUrl="@Model.ReturnUrl"
+                           style="color:#ACBFA4;">
+                            Criar nova conta
+                        </a>
+                    </p>
+                    <p>
+                        <a asp-page="./ResendEmailConfirmation"
+                           style="color:#ACBFA4;">
+                            Reenviar confirmação de email
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

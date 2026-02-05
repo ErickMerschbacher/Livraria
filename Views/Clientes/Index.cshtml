@@ -1,47 +1,69 @@
 ﻿@model IEnumerable<Livraria.Models.Cliente>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
 }
 
-<h1>Index</h1>
+<body style="background:#E2E8CE; min-height:100vh;">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <h1 style="color:#40513B; text-align:center; padding-top:30px;">
+        Clientes
+    </h1>
+
+    <div style="display:flex; justify-content:center; padding:20px;">
+        <div style="width:80%; background:#40513B; padding:30px; border-radius:12px;">
+
+            <div style="text-align:center; margin-bottom:10px;">
+                <a asp-action="Create"
+                   style="background:#FF7F11;
+                      color:#262626;
+                      padding:10px 20px;
+                      border-radius:8px;
+                      text-decoration:none;
+                      font-weight:bold;">
+                    + Criar Novo
+                </a>
+            </div>
+
+            <table class="table"
+                   style="background:#E5D9B6;
+                      border-radius:10px;
+                      overflow:hidden;">
+                <thead style="background:#628141; color:#E5D9B6;">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th style="text-align:center;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="color:#262626;">
+                            <td>@item.Nome</td>
+                            <td>@item.Email</td>
+                            <td>@item.Telefone</td>
+                            <td style="text-align:center;">
+                                <a asp-action="Edit" asp-route-id="@item.Id"
+                                   style="color:#40513B; font-weight:bold;">
+                                    Editar
+                                </a> |
+                                <a asp-action="Details" asp-route-id="@item.Id"
+                                   style="color:#628141; font-weight:bold;">
+                                    Detalhes
+                                </a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id"
+                                   style="color:#E67E22; font-weight:bold;">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>

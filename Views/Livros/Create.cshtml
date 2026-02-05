@@ -4,45 +4,65 @@
     ViewData["Title"] = "Criar";
 }
 
-<h1>Create</h1>
+<body style="background:#E2E8CE; min-height:100vh;">
 
-<h4>Livro</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Autor" class="control-label"></label>
-                <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Preco" class="control-label"></label>
-                <input asp-for="Preco" class="form-control" />
-                <span asp-validation-for="Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
-                <input asp-for="Genero" class="form-control" />
-                <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <h1 style="color:#40513B; text-align:center; padding-top:30px;">Criar</h1>
+
+    <h4 style="color:#628141; text-align:center;">Livro</h4>
+    <hr />
+
+    <div class="row" style="display:flex; justify-content:center;">
+        <div class="col-md-4" style="background:#40513B; padding:30px; border-radius:12px;">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label" style="color:#E5D9B6;"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Autor" class="control-label" style="color:#E5D9B6;"></label>
+                    <input asp-for="Autor" class="form-control" />
+                    <span asp-validation-for="Autor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Preco" class="control-label" style="color:#E5D9B6;"></label>
+                    <input asp-for="Preco" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Genero" class="control-label" style="color:#E5D9B6;"></label>
+                    <input asp-for="Genero" class="form-control" />
+                    <span asp-validation-for="Genero" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit"
+                           value="Criar"
+                           class="btn"
+                           style="background:#FF7F11; color:#262626; font-weight:bold;" />
+                </div>
+            </form>
+
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div style="text-align:center; margin-top:15px;">
+        <a asp-action="Index"
+           style="color:#40513B; font-weight:bold; text-decoration:none;">
+            Voltar
+        </a>
+    </div>
+
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
